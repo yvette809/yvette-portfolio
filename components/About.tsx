@@ -1,7 +1,20 @@
 const STACK = [
-  "Java 21", "Spring Boot", "React.js", "Next.js",
-  "TypeScript", "MySQL", "Docker", "GitHub Actions",
-  "Tailwind CSS", "MongoDB", "Node.js", "JWT / OAuth2",
+  "Java 21",
+  "Spring Boot",
+  "React.js",
+  "Next.js",
+  "TypeScript",
+  "MySQL",
+  "Docker",
+  "GitHub Actions",
+  "Tailwind CSS",
+  "MongoDB",
+  "Node.js",
+  "JWT / OAuth2",
+  "CI / CD",
+  "REST APIs",
+  "Agile / Scrum",
+  "Git / GitHub",
 ];
 
 export default function About() {
@@ -14,34 +27,50 @@ export default function About() {
         className="reveal font-head font-extrabold text-white tracking-[-0.02em] leading-[1.1] mb-4"
         style={{ fontSize: "clamp(1.8rem, 5vw, 3.4rem)" }}
       >
-        Developer with a<br />business edge.
+        Developer with a<br />
+        business edge.
       </h2>
 
       <div className="grid md:grid-cols-2 gap-10 md:gap-20 items-center mt-12 md:mt-16">
         <div className="reveal">
           <p className="text-sm sm:text-base text-muted leading-[1.9] mb-4">
-            I&apos;m a <strong className="text-white font-medium">fullstack developer</strong> with a passion for
-            building things that are both technically robust and genuinely useful. I specialise in{" "}
-            <span className="text-mint">Java/Spring Boot</span> on the backend and{" "}
-            <span className="text-mint">React/Next.js</span> on the frontend.
+            I&apos;m a{" "}
+            <strong className="text-white font-medium">
+              fullstack developer
+            </strong>{" "}
+            with a passion for building things that are both technically robust
+            and genuinely useful. I specialise in{" "}
+            <span className="text-mint">Java/Spring Boot</span> on the backend
+            and <span className="text-mint">React/Next.js</span> on the
+            frontend.
           </p>
           <p className="text-sm sm:text-base text-muted leading-[1.9] mb-4">
             What sets me apart: an{" "}
-            <strong className="text-white font-medium">MSc in Business Administration</strong> from Umeå
-            University means I understand the business context behind the code — I don&apos;t just build features,
-            I understand <em>why</em> they matter.
+            <strong className="text-white font-medium">
+              MSc in Business Administration
+            </strong>{" "}
+            from Umeå University means I understand the business context behind
+            the code — I don&apos;t just build features, I understand{" "}
+            <em>why</em> they matter.
           </p>
           <p className="text-sm sm:text-base text-muted leading-[1.9] mb-4">
             Currently completing my{" "}
-            <strong className="text-white font-medium">Java Systems Developer YH degree</strong> and an
-            internship at <strong className="text-white font-medium">Nobicon AB</strong>, where I independently
-            built a fullstack statistics platform for their Awareness product. Open to new opportunities in agile teams.
+            <strong className="text-white font-medium">
+              Java Systems Developer YH degree
+            </strong>{" "}
+            and an internship at{" "}
+            <strong className="text-white font-medium">Nobicon AB</strong>,
+            where I independently built a fullstack statistics platform for
+            their Awareness product. Open to new opportunities in agile teams.
           </p>
 
           <div className="flex gap-3 flex-wrap mt-8">
             {[
               { href: "https://github.com/yvette809", label: "↗ GitHub" },
-              { href: "https://www.linkedin.com/in/yvette-tanila-nchombua-a8708b20/", label: "↗ LinkedIn" },
+              {
+                href: "https://www.linkedin.com/in/yvette-tanila-nchombua-a8708b20/",
+                label: "↗ LinkedIn",
+              },
               { href: "mailto:nchombuayvta@gmail.com", label: "✉ Email me" },
             ].map((l) => (
               <a
@@ -61,7 +90,10 @@ export default function About() {
           <div className="bg-surface border border-white/[0.07] rounded-xl p-6 sm:p-10 relative overflow-hidden">
             <div
               className="absolute top-0 left-0 right-0 h-[2px]"
-              style={{ background: "linear-gradient(90deg, transparent, var(--mint), transparent)" }}
+              style={{
+                background:
+                  "linear-gradient(90deg, transparent, var(--mint), transparent)",
+              }}
             />
             <div className="grid grid-cols-2 gap-2 sm:gap-3">
               {STACK.map((item) => (
