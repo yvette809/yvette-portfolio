@@ -38,7 +38,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${syne.variable} ${figtree.variable} ${dmMono.variable}`}>
+    <html
+      lang="en"
+      className={`${syne.variable} ${figtree.variable} ${dmMono.variable}`}
+    >
       <body className="font-body">{children}</body>
     </html>
   );

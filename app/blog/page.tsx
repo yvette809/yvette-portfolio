@@ -15,7 +15,7 @@ export default function BlogPage() {
       <CustomCursor />
       <Nav />
 
-      <section className="pt-40 pb-20 px-[5vw] relative z-[2]">
+      <section className="pt-32 sm:pt-40 pb-20 px-[5vw] relative z-[2]">
         <Link
           href="/"
           className="font-mono text-xs text-muted hover:text-mint transition-colors mb-8 inline-flex items-center gap-2"
@@ -28,20 +28,20 @@ export default function BlogPage() {
         </div>
         <h1
           className="font-head font-extrabold text-white tracking-[-0.02em] leading-[1.1] mb-6"
-          style={{ fontSize: "clamp(2.5rem, 6vw, 4.2rem)" }}
+          style={{ fontSize: "clamp(2rem, 6vw, 4.2rem)" }}
         >
           The Blog.
         </h1>
-        <p className="text-base text-muted max-w-[600px] leading-[1.8] mb-16">
+        <p className="text-sm sm:text-base text-muted max-w-[600px] leading-[1.8] mb-12 sm:mb-16">
           Notes from my work as a developer — architecture decisions, career reflections, and technical deep-dives.
         </p>
 
-        <div className="flex flex-col gap-6 max-w-4xl">
+        <div className="flex flex-col gap-5 sm:gap-6 max-w-4xl">
           {posts.map((post) => (
             <Link
               key={post.slug}
               href={`/blog/${post.slug}`}
-              className="group bg-surface border border-white/[0.07] rounded-xl p-8 hover:border-mint/30 hover:bg-bg3 transition-all"
+              className="group bg-surface border border-white/[0.07] rounded-xl p-6 sm:p-8 hover:border-mint/30 hover:bg-bg3 transition-all"
             >
               <div className="flex items-center gap-3 mb-4 font-mono text-[0.72rem] text-muted">
                 <span>{formatDate(post.date)}</span>
@@ -49,11 +49,13 @@ export default function BlogPage() {
                 <span>{post.readTime}</span>
               </div>
 
-              <h2 className="font-head text-2xl font-bold text-white mb-3 leading-tight tracking-[-0.01em] group-hover:text-mint transition-colors">
+              <h2 className="font-head text-xl sm:text-2xl font-bold text-white mb-3 leading-tight tracking-[-0.01em] group-hover:text-mint transition-colors">
                 {post.title}
               </h2>
 
-              <p className="text-base text-muted leading-[1.7] mb-5">{post.excerpt}</p>
+              <p className="text-sm sm:text-base text-muted leading-[1.7] mb-5">
+                {post.excerpt}
+              </p>
 
               <div className="flex flex-wrap gap-2 items-center">
                 {post.tags.map((t) => (

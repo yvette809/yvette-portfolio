@@ -57,31 +57,37 @@ export default function Experience() {
   }, []);
 
   return (
-    <section id="experience" ref={ref} className="py-28 px-[5vw] bg-bg2 relative z-[2]">
+    <section
+      id="experience"
+      ref={ref}
+      className="py-20 md:py-28 px-[5vw] bg-bg2 relative z-[2]"
+    >
       <div className="section-label reveal font-mono text-xs text-mint uppercase tracking-[0.2em] mb-3">
         Career
       </div>
-      <h2 className="reveal font-head font-extrabold text-white tracking-[-0.02em] leading-[1.1]"
-          style={{ fontSize: "clamp(2rem, 5vw, 3.4rem)" }}>
+      <h2
+        className="reveal font-head font-extrabold text-white tracking-[-0.02em] leading-[1.1]"
+        style={{ fontSize: "clamp(1.8rem, 5vw, 3.4rem)" }}
+      >
         Experience.
       </h2>
 
-      <div className="mt-16 relative pl-8 max-w-4xl">
+      <div className="mt-12 md:mt-16 relative pl-6 md:pl-8 max-w-4xl">
         <div className="absolute left-0 top-0 bottom-0 w-px bg-faint" />
         {ITEMS.map((item, i) => (
           <div
             key={i}
-            className="timeline-item relative mb-14 pl-10 opacity-0 -translate-x-5 [&.visible]:opacity-100 [&.visible]:translate-x-0 transition-all duration-700 ease-out"
+            className="timeline-item relative mb-10 md:mb-14 pl-7 md:pl-10 opacity-0 -translate-x-5 [&.visible]:opacity-100 [&.visible]:translate-x-0 transition-all duration-700 ease-out"
             style={{ transitionDelay: `${i * 100}ms` }}
           >
-            <div className="absolute -left-[35px] top-1.5 w-2.5 h-2.5 rounded-full bg-bg border-2 border-mint" />
-            <div className="font-mono text-[0.72rem] text-mint tracking-[0.1em] uppercase mb-1.5">
+            <div className="absolute -left-[27px] md:-left-[35px] top-1.5 w-2.5 h-2.5 rounded-full bg-bg border-2 border-mint" />
+            <div className="font-mono text-[0.7rem] sm:text-[0.72rem] text-mint tracking-[0.1em] uppercase mb-1.5">
               {item.period}
             </div>
-            <h3 className="font-head text-xl font-bold text-white mb-1 tracking-[-0.01em]">
+            <h3 className="font-head text-lg sm:text-xl font-bold text-white mb-1 tracking-[-0.01em]">
               {item.role}
             </h3>
-            <div className="text-sm text-muted mb-4">{item.company}</div>
+            <div className="text-xs sm:text-sm text-muted mb-4">{item.company}</div>
             <ul className="flex flex-col gap-1.5 list-none">
               {item.points.map((p, j) => (
                 <li

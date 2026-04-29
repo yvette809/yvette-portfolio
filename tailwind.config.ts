@@ -15,8 +15,8 @@ const config: Config = {
         mint: "#5FFFD7",
         coral: "#FF7B6B",
         gold: "#FFD166",
-        muted: "#6B7A99",
-        faint: "#2A3346",
+        muted: "#9AA8C2",
+        faint: "#3A4560",
       },
       fontFamily: {
         head: ["var(--font-syne)", "sans-serif"],

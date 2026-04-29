@@ -1,104 +1,79 @@
 # Yvette Tanila Nchombua — Portfolio
 
-A modern, cinematic portfolio built with **Next.js 14**, **TypeScript**, and **Tailwind CSS** — featuring a blog and a working contact form.
+A modern, cinematic portfolio built with **Next.js 14**, **TypeScript**, and **Tailwind CSS** — featuring a blog, an EmailJS-powered contact form, and a fully responsive design with mobile hamburger menu.
 
 ## Features
 
 - 🌑 Cinematic dark theme with electric mint accents
-- 🖱️ Custom cursor that follows the mouse
+- 🍔 **Hamburger menu** on mobile with full-screen overlay
+- 🖱️ Custom cursor (desktop only — auto-disabled on touch)
 - ✍️ Typed role animation in the hero
-- 📜 Scroll-reveal animations on every section
+- 📜 Scroll-reveal animations
 - 📊 Animated skill proficiency bars
-- 🎴 Project cards with hover effects
-- ✉️ **Working contact form** with validation, loading/success/error states
-- 📝 **Blog** with listing page and individual post pages (3 starter posts included)
-- 📱 Fully responsive
-- ⚡ Optimised fonts via `next/font`
+- 🎴 Project cards with **real screenshots** support
+- ✉️ **Working EmailJS contact form** — success/error banners at top
+- 📝 Blog with listing + individual post pages
+- 📱 Fully responsive (mobile, tablet, desktop)
+- 🎨 Improved text contrast for readability
 - 🎯 SEO-ready metadata
-
-## Stack
-
-- **Framework**: Next.js 14 (App Router)
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS + custom CSS variables
-- **Fonts**: Syne, Figtree, DM Mono (via `next/font`)
 
 ## Setup
 
 ```bash
 npm install
+cp .env.local.example .env.local
+# Edit .env.local with your EmailJS keys
 npm run dev
 ```
 
 Open **http://localhost:3000**.
 
-## ✉️ Contact form setup
+## ✉️ EmailJS setup
 
-The contact form works out of the box for testing — submissions are validated and **logged to the server console**. To actually deliver emails, choose ONE of three options.
-
-### Option 1: Resend (recommended)
-
-Resend is the cleanest option — clean API, generous free tier (3000 emails/month).
-
-```bash
-npm install resend
-```
-
-1. Sign up at [resend.com](https://resend.com), get an API key
-2. Create `.env.local` in the project root:
+1. Sign up at [emailjs.com](https://www.emailjs.com) (free tier: 200 emails/month)
+2. **Email Services** → "Add New Service" → connect Gmail/Outlook
+3. **Email Templates** → "Create New Template", use these variables in the template body:
    ```
-   RESEND_API_KEY=re_your_key_here
+   From: {{name}} <{{email}}>
+   Subject: {{subject}}
+
+   {{message}}
    ```
-3. Open `app/api/contact/route.ts` and uncomment the Resend block
-
-### Option 2: Web3Forms (no signup-fuss)
-
-1. Visit [web3forms.com](https://web3forms.com), enter your email, get an access key by email
-2. Create `.env.local`:
+   Set "To Email" to your address (`nchombuayvta@gmail.com`).
+4. **Account → API Keys** → copy your **Public Key**
+5. **Account → Security** → add allowed origins (your domain in production, `localhost` for dev)
+6. Paste the three values into `.env.local`:
    ```
-   WEB3FORMS_KEY=your_key_here
+   NEXT_PUBLIC_EMAILJS_SERVICE_ID=service_xxx
+   NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=template_xxx
+   NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=xxx
    ```
-3. Open `app/api/contact/route.ts` and uncomment the Web3Forms block
+7. Restart `npm run dev`
 
-### Option 3: Formspree
+## 📷 Adding project screenshots
 
-Replace the `<form>` action with a Formspree endpoint and remove the API route entirely. See [formspree.io](https://formspree.io).
+The portfolio currently uses a placeholder SVG for project images. To add real screenshots:
 
-## 📝 Blog setup
+1. Take screenshots of your live projects (use [shots.so](https://shots.so/) for nice browser frames)
+2. Save them in `public/projects/` as `.webp` (smaller) or `.png`:
+   ```
+   public/projects/
+     ai-studio.webp
+     awareness.webp
+     airbnb.webp
+     activity-finder.webp
+     beach-resort.webp
+   ```
+3. Update the `image` field in `components/Projects.tsx`:
+   ```typescript
+   image: "/projects/airbnb.webp"
+   ```
 
-Three sample posts are included in `lib/posts.ts`. To add a new post, just append to the `posts` array:
+**Recommended size**: 1200×750px or 1600×1000px
 
-```typescript
-{
-  slug: "my-new-post",
-  title: "My New Post",
-  excerpt: "Short summary shown on cards...",
-  date: "2025-04-15",
-  readTime: "5 min",
-  tags: ["Tag1", "Tag2"],
-  content: `
-Your content goes here. The renderer supports:
+## 📝 Adding blog posts
 
-## Headings
-
-**Bold text** and \`inline code\`.
-
-\`\`\`
-code blocks
-\`\`\`
-
-- Bullet lists
-- Like this
-
-1. Numbered lists
-2. Like this
-  `,
-}
-```
-
-The blog is at `/blog`. Individual posts at `/blog/[slug]`. Posts are statically generated at build time.
-
-**For a more powerful editing experience**, consider migrating to **MDX** (`@next/mdx`) or a headless CMS like **Sanity** or **Contentlayer**.
+Edit `lib/posts.ts` and append a new post to the `posts` array. The renderer supports headings (`##`), bold (`**text**`), inline code (`` `code` ``), code blocks (` ``` `), and bullet/numbered lists.
 
 ## Build for production
 
@@ -107,14 +82,14 @@ npm run build
 npm run start
 ```
 
-## Deploy to Vercel (easiest)
+## Deploy to Vercel (recommended)
 
 ```bash
 npm install -g vercel
 vercel
 ```
 
-Add your `.env.local` values to Vercel's dashboard under "Environment Variables".
+Then add your `NEXT_PUBLIC_EMAILJS_*` keys in **Vercel Dashboard → Project → Settings → Environment Variables**.
 
 ## Deploy to Netlify
 
@@ -122,42 +97,40 @@ Add your `.env.local` values to Vercel's dashboard under "Environment Variables"
 2. Go to [Netlify](https://app.netlify.com) → "New site from Git"
 3. Build command: `npm run build`
 4. Publish directory: `.next`
-5. Netlify auto-installs the Next.js plugin
-6. Add environment variables in Site Settings → Environment
+5. Add env vars under **Site Settings → Environment Variables**
 
 ## Project Structure
 
 ```
 yvette-portfolio/
 ├── app/
-│   ├── layout.tsx              # Root layout, fonts, metadata
-│   ├── page.tsx                # Main page
-│   ├── globals.css             # Global styles
-│   ├── blog/
-│   │   ├── page.tsx            # Blog listing
-│   │   └── [slug]/page.tsx     # Individual blog post
-│   └── api/
-│       └── contact/route.ts    # Contact form API
+│   ├── layout.tsx
+│   ├── page.tsx
+│   ├── globals.css
+│   └── blog/
+│       ├── page.tsx
+│       └── [slug]/page.tsx
 ├── components/
 │   ├── CustomCursor.tsx
 │   ├── Reveal.tsx
-│   ├── Nav.tsx
+│   ├── Nav.tsx               ← Hamburger menu on mobile
 │   ├── Hero.tsx
 │   ├── About.tsx
-│   ├── Projects.tsx
+│   ├── Projects.tsx          ← Image-based cards
 │   ├── Skills.tsx
 │   ├── Experience.tsx
 │   ├── Education.tsx
-│   ├── BlogPreview.tsx         # Blog cards on homepage
-│   ├── Contact.tsx             # Contact section
-│   ├── ContactForm.tsx         # Form component
+│   ├── BlogPreview.tsx
+│   ├── Contact.tsx
+│   ├── ContactForm.tsx       ← EmailJS form
 │   └── Footer.tsx
 ├── lib/
-│   └── posts.ts                # Blog post data
-├── package.json
-├── tailwind.config.ts
-├── tsconfig.json
-└── next.config.js
+│   └── posts.ts              ← Blog content
+├── public/
+│   └── projects/
+│       └── placeholder.svg
+├── .env.local.example
+└── ...config files
 ```
 
 ## License

@@ -2,7 +2,10 @@ import ContactForm from "./ContactForm";
 
 export default function Contact() {
   return (
-    <section id="contact" className="py-28 px-[5vw] bg-bg text-center relative overflow-hidden z-[2]">
+    <section
+      id="contact"
+      className="py-20 md:py-28 px-[5vw] bg-bg text-center relative overflow-hidden z-[2]"
+    >
       <div
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] pointer-events-none"
         style={{
@@ -14,15 +17,15 @@ export default function Contact() {
       </div>
       <h2
         className="font-head font-extrabold text-white tracking-[-0.02em] leading-[1.1] mb-4"
-        style={{ fontSize: "clamp(2rem, 5vw, 3.4rem)" }}
+        style={{ fontSize: "clamp(1.8rem, 5vw, 3.4rem)" }}
       >
         Get in touch.
       </h2>
-      <p className="text-base text-muted max-w-[500px] mx-auto mb-12 leading-[1.8]">
+      <p className="text-sm sm:text-base text-muted max-w-[500px] mx-auto mb-10 sm:mb-12 leading-[1.8]">
         I&apos;m actively looking for new opportunities. Whether you have a role, a project, or just want to say hello — drop me a message.
       </p>
 
-      <div className="relative z-[2] mb-16">
+      <div className="relative z-[2] mb-12 sm:mb-16">
         <ContactForm />
       </div>
 
@@ -32,13 +35,13 @@ export default function Contact() {
         </div>
         <a
           href="mailto:nchombuayvta@gmail.com"
-          className="font-head font-bold text-white tracking-[-0.01em] hover:text-mint transition-colors"
-          style={{ fontSize: "clamp(1.2rem, 3vw, 1.8rem)" }}
+          className="font-head font-bold text-white tracking-[-0.01em] hover:text-mint transition-colors break-all px-4"
+          style={{ fontSize: "clamp(1.05rem, 3vw, 1.8rem)" }}
         >
           nchombuayvta@gmail.com
         </a>
 
-        <div className="flex justify-center gap-4 flex-wrap mt-4">
+        <div className="flex justify-center gap-3 sm:gap-4 flex-wrap mt-4">
           {[
             {
               href: "https://www.linkedin.com/in/yvette-tanila-nchombua-a8708b20/",
@@ -74,7 +77,7 @@ export default function Contact() {
               href={l.href}
               target={l.href.startsWith("http") ? "_blank" : undefined}
               rel="noopener noreferrer"
-              className="flex items-center gap-2 font-mono text-xs text-muted border border-white/[0.07] px-4 py-2 rounded-md hover:text-mint hover:border-mint hover:bg-[var(--mint-dim)] hover:-translate-y-0.5 transition-all"
+              className="flex items-center gap-2 font-mono text-xs text-muted border border-white/[0.07] px-3 sm:px-4 py-2 rounded-md hover:text-mint hover:border-mint hover:bg-[var(--mint-dim)] hover:-translate-y-0.5 transition-all"
             >
               {l.icon}
               {l.label}

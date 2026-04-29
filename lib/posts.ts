@@ -123,14 +123,12 @@ For a given profile, I needed to find every descendant — at any depth.
 
 \`\`\`sql
 WITH RECURSIVE descendants AS (
-  -- Anchor: start with the target profile
   SELECT id, name, parent_id, 0 AS depth
   FROM profiles
   WHERE id = ?
 
   UNION ALL
 
-  -- Recursive: join children
   SELECT p.id, p.name, p.parent_id, d.depth + 1
   FROM profiles p
   INNER JOIN descendants d ON p.parent_id = d.id

@@ -32,20 +32,22 @@ export default function Education() {
   }, []);
 
   return (
-    <section id="education" ref={ref} className="py-28 px-[5vw] relative z-[2]">
+    <section id="education" ref={ref} className="py-20 md:py-28 px-[5vw] relative z-[2]">
       <div className="section-label reveal font-mono text-xs text-mint uppercase tracking-[0.2em] mb-3">
         Academic background
       </div>
-      <h2 className="reveal font-head font-extrabold text-white tracking-[-0.02em] leading-[1.1]"
-          style={{ fontSize: "clamp(2rem, 5vw, 3.4rem)" }}>
+      <h2
+        className="reveal font-head font-extrabold text-white tracking-[-0.02em] leading-[1.1]"
+        style={{ fontSize: "clamp(1.8rem, 5vw, 3.4rem)" }}
+      >
         Education.
       </h2>
 
-      <div className="grid md:grid-cols-2 gap-4 mt-16">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 mt-12 md:mt-16">
         {EDU.map((e, i) => (
           <div
             key={i}
-            className="reveal group bg-surface border border-white/[0.07] rounded-xl px-7 py-6 hover:border-mint/20 hover:bg-bg3 transition-all relative overflow-hidden"
+            className="reveal group bg-surface border border-white/[0.07] rounded-xl px-5 sm:px-7 py-5 sm:py-6 hover:border-mint/20 hover:bg-bg3 transition-all relative overflow-hidden"
             style={{ transitionDelay: `${(i + 1) * 80}ms` }}
           >
             <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-mint scale-y-0 origin-top group-hover:scale-y-100 transition-transform duration-400" />

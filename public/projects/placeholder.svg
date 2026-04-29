@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" width="1200" height="750">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0D1117"/>
+      <stop offset="0.5" stop-color="#131920"/>
+      <stop offset="1" stop-color="#0D1117"/>
+    </linearGradient>
+    <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#3A4560" stroke-width="0.5" opacity="0.4"/>
+    </pattern>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#5FFFD7" stop-opacity="0.15"/>
+      <stop offset="1" stop-color="#5FFFD7" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="750" fill="url(#bg)"/>
+  <rect width="1200" height="750" fill="url(#grid)"/>
+  <rect width="1200" height="750" fill="url(#glow)"/>
+  <text x="600" y="365" text-anchor="middle" font-family="monospace" font-size="22" fill="#5FFFD7" letter-spacing="4">PROJECT SCREENSHOT</text>
+  <text x="600" y="400" text-anchor="middle" font-family="sans-serif" font-size="15" fill="#9AA8C2">Add your image to /public/projects/</text>
+</svg>

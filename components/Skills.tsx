@@ -68,17 +68,19 @@ export default function Skills() {
   }, []);
 
   return (
-    <section id="skills" ref={sectionRef} className="py-28 px-[5vw] relative z-[2]">
+    <section id="skills" ref={sectionRef} className="py-20 md:py-28 px-[5vw] relative z-[2]">
       <div className="section-label reveal font-mono text-xs text-mint uppercase tracking-[0.2em] mb-3">
         What I work with
       </div>
-      <h2 className="reveal font-head font-extrabold text-white tracking-[-0.02em] leading-[1.1]"
-          style={{ fontSize: "clamp(2rem, 5vw, 3.4rem)" }}>
+      <h2
+        className="reveal font-head font-extrabold text-white tracking-[-0.02em] leading-[1.1]"
+        style={{ fontSize: "clamp(1.8rem, 5vw, 3.4rem)" }}
+      >
         Skills &amp; tools.
       </h2>
 
-      <div className="grid md:grid-cols-[1fr_1.4fr] gap-20 mt-16 items-start">
-        <div className="flex flex-col gap-10">
+      <div className="grid md:grid-cols-[1fr_1.4fr] gap-10 md:gap-20 mt-12 md:mt-16 items-start">
+        <div className="flex flex-col gap-8 md:gap-10">
           {CATEGORIES.map((cat, i) => (
             <div key={cat.title} className="reveal" style={{ transitionDelay: `${(i + 1) * 100}ms` }}>
               <div className="font-mono text-[0.72rem] text-mint uppercase tracking-[0.15em] mb-4">
@@ -88,7 +90,7 @@ export default function Skills() {
                 {cat.skills.map((s) => (
                   <span
                     key={s}
-                    className="skill-pill font-mono text-[0.78rem] text-white bg-surface border border-white/[0.07] px-4 py-2 rounded-full hover:bg-[var(--mint-dim)] hover:border-mint hover:text-mint hover:-translate-y-0.5 transition-all"
+                    className="skill-pill font-mono text-[0.72rem] sm:text-[0.78rem] text-white bg-surface border border-white/[0.07] px-3 sm:px-4 py-1.5 sm:py-2 rounded-full hover:bg-[var(--mint-dim)] hover:border-mint hover:text-mint hover:-translate-y-0.5 transition-all"
                   >
                     {s}
                   </span>
@@ -98,25 +100,32 @@ export default function Skills() {
           ))}
         </div>
 
-        <div ref={visualRef} className="reveal bg-surface border border-white/[0.07] rounded-xl p-8 relative overflow-hidden">
-          <div className="absolute -bottom-10 -right-10 w-52 h-52 pointer-events-none"
-               style={{ background: "radial-gradient(circle, rgba(95,255,215,0.08), transparent 70%)" }} />
+        <div
+          ref={visualRef}
+          className="reveal bg-surface border border-white/[0.07] rounded-xl p-6 sm:p-8 relative overflow-hidden"
+        >
+          <div
+            className="absolute -bottom-10 -right-10 w-52 h-52 pointer-events-none"
+            style={{
+              background: "radial-gradient(circle, rgba(95,255,215,0.08), transparent 70%)",
+            }}
+          />
           <div className="font-head text-base font-semibold text-white mb-7 relative">
             Proficiency overview
           </div>
           {BARS.map((bar) => (
             <div key={bar.name} className="mb-5">
               <div className="flex justify-between mb-1.5">
-                <span className="font-mono text-[0.75rem] text-muted">{bar.name}</span>
-                <span className="font-mono text-[0.72rem] text-mint">{bar.pct}%</span>
+                <span className="font-mono text-[0.72rem] sm:text-[0.75rem] text-muted">{bar.name}</span>
+                <span className="font-mono text-[0.7rem] sm:text-[0.72rem] text-mint">{bar.pct}%</span>
               </div>
               <div className="h-[3px] bg-faint rounded-sm overflow-hidden">
                 <div
-                  className="h-full rounded-sm transition-[width] duration-1200 ease-out"
+                  className="h-full rounded-sm"
                   style={{
                     width: barsActive ? `${bar.pct}%` : "0%",
                     background: "linear-gradient(90deg, var(--mint), rgba(95,255,215,0.5))",
-                    transitionDuration: "1.2s",
+                    transition: "width 1.2s cubic-bezier(0.22,1,0.36,1)",
                   }}
                 />
               </div>

@@ -27,7 +27,7 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
       <CustomCursor />
       <Nav />
 
-      <article className="pt-40 pb-20 px-[5vw] relative z-[2] max-w-3xl mx-auto">
+      <article className="pt-32 sm:pt-40 pb-20 px-[5vw] relative z-[2] max-w-3xl mx-auto">
         <Link
           href="/blog"
           className="font-mono text-xs text-muted hover:text-mint transition-colors mb-8 inline-flex items-center gap-2"
@@ -43,12 +43,12 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
 
         <h1
           className="font-head font-extrabold text-white tracking-[-0.02em] leading-[1.1] mb-6"
-          style={{ fontSize: "clamp(2rem, 5vw, 3.4rem)" }}
+          style={{ fontSize: "clamp(1.8rem, 5vw, 3.4rem)" }}
         >
           {post.title}
         </h1>
 
-        <div className="flex flex-wrap gap-2 mb-12">
+        <div className="flex flex-wrap gap-2 mb-10 sm:mb-12">
           {post.tags.map((t) => (
             <span
               key={t}
@@ -59,11 +59,11 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
           ))}
         </div>
 
-        <div className="prose-content text-muted text-[1.05rem] leading-[1.9]">
+        <div className="prose-content text-muted text-base sm:text-[1.05rem] leading-[1.9]">
           {renderContent(post.content)}
         </div>
 
-        <div className="mt-20 pt-8 border-t border-white/[0.07] flex justify-between items-center flex-wrap gap-4">
+        <div className="mt-16 sm:mt-20 pt-8 border-t border-white/[0.07] flex justify-between items-center flex-wrap gap-4">
           <Link
             href="/blog"
             className="font-mono text-sm text-muted hover:text-mint transition-colors"
@@ -92,13 +92,15 @@ function formatDate(d: string) {
   });
 }
 
-/* Lightweight markdown-ish renderer for the content field */
 function renderContent(content: string) {
   const blocks = content.trim().split(/\n\n+/);
   return blocks.map((block, i) => {
     if (block.startsWith("## ")) {
       return (
-        <h2 key={i} className="font-head text-2xl font-bold text-white mt-12 mb-4 tracking-[-0.01em]">
+        <h2
+          key={i}
+          className="font-head text-xl sm:text-2xl font-bold text-white mt-10 sm:mt-12 mb-4 tracking-[-0.01em]"
+        >
           {block.slice(3)}
         </h2>
       );
@@ -108,7 +110,7 @@ function renderContent(content: string) {
       return (
         <pre
           key={i}
-          className="bg-bg2 border border-white/[0.07] rounded-lg p-5 overflow-x-auto my-6 font-mono text-[0.85rem] text-mint"
+          className="bg-bg2 border border-white/[0.07] rounded-lg p-4 sm:p-5 overflow-x-auto my-6 font-mono text-xs sm:text-[0.85rem] text-mint"
         >
           <code>{code}</code>
         </pre>
@@ -147,7 +149,6 @@ function renderContent(content: string) {
 }
 
 function renderInline(text: string): React.ReactNode {
-  // Handle inline code, bold, and emphasis
   const parts: React.ReactNode[] = [];
   let remaining = text;
   let key = 0;
