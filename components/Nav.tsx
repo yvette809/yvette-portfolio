@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import CVButton from "./CVButton";
 
 const links = [
   { href: "/#about", label: "About" },
@@ -38,7 +39,10 @@ export default function Nav() {
             : "bg-transparent py-5 md:py-6"
         }`}
       >
-        <a href="/" className="font-mono text-[0.85rem] text-mint tracking-[0.05em] z-[110]">
+        <a
+          href="/"
+          className="font-mono text-[0.85rem] text-mint tracking-[0.05em] z-[110]"
+        >
           YTN.dev
         </a>
 
@@ -56,27 +60,7 @@ export default function Nav() {
         </ul>
 
         <div className="hidden md:flex items-center gap-3">
-          <a
-            href="/cv.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-mono text-xs text-muted hover:text-mint transition-colors tracking-[0.05em] flex items-center gap-1.5"
-            title="Download CV"
-          >
-            <svg
-              width="13"
-              height="13"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-            >
-              <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4" />
-              <polyline points="7 10 12 15 17 10" />
-              <line x1="12" y1="15" x2="12" y2="3" />
-            </svg>
-            CV
-          </a>
+          <CVButton variant="compact" />
           <a
             href="mailto:nchombuayvta@gmail.com"
             className="font-mono text-xs border border-mint text-mint px-5 py-2 rounded-sm hover:bg-[var(--mint-dim)] transition-colors tracking-[0.05em]"
@@ -113,7 +97,9 @@ export default function Nav() {
       {/* Mobile menu overlay */}
       <div
         className={`md:hidden fixed inset-0 z-[105] bg-[rgba(7,9,15,0.98)] backdrop-blur-2xl transition-all duration-500 ${
-          open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+          open
+            ? "opacity-100 pointer-events-auto"
+            : "opacity-0 pointer-events-none"
         }`}
       >
         <div className="h-full flex flex-col justify-center items-center px-[5vw]">
@@ -124,7 +110,9 @@ export default function Nav() {
                   href={l.href}
                   onClick={() => setOpen(false)}
                   className={`font-head text-3xl sm:text-4xl font-bold text-white hover:text-mint transition-all block ${
-                    open ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+                    open
+                      ? "translate-y-0 opacity-100"
+                      : "translate-y-8 opacity-0"
                   }`}
                   style={{
                     transitionDuration: "500ms",
@@ -138,12 +126,8 @@ export default function Nav() {
           </ul>
 
           <div className="flex flex-col gap-3 items-center">
-            <a
-              href="/cv.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => setOpen(false)}
-              className={`font-mono text-sm border border-mint/30 text-mint px-8 py-3 rounded-sm hover:bg-[var(--mint-dim)] transition-all tracking-[0.05em] flex items-center gap-2 ${
+            <div
+              className={`transition-all ${
                 open ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
               }`}
               style={{
@@ -151,20 +135,8 @@ export default function Nav() {
                 transitionDelay: open ? `${links.length * 60 + 150}ms` : "0ms",
               }}
             >
-              <svg
-                width="14"
-                height="14"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-              >
-                <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4" />
-                <polyline points="7 10 12 15 17 10" />
-                <line x1="12" y1="15" x2="12" y2="3" />
-              </svg>
-              Download CV
-            </a>
+              <CVButton variant="ghost" onClick={() => setOpen(false)} />
+            </div>
             <a
               href="mailto:nchombuayvta@gmail.com"
               onClick={() => setOpen(false)}
