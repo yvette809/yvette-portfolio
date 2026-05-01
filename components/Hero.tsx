@@ -109,6 +109,26 @@ export default function Hero() {
             View my work
           </a>
           <a
+            href="/cv.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-mono text-xs sm:text-sm border border-mint/30 text-mint px-6 sm:px-8 py-3 rounded hover:bg-[var(--mint-dim)] hover:border-mint transition-all tracking-[0.05em] flex items-center gap-2"
+          >
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+            >
+              <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4" />
+              <polyline points="7 10 12 15 17 10" />
+              <line x1="12" y1="15" x2="12" y2="3" />
+            </svg>
+            Download CV
+          </a>
+          <a
             href="#contact"
             className="font-mono text-xs sm:text-sm border border-faint text-white px-6 sm:px-8 py-3 rounded hover:border-mint hover:bg-[var(--mint-dim)] transition-all tracking-[0.05em]"
           >
@@ -143,10 +163,10 @@ export default function Hero() {
         </div>
         <div className="text-right hidden md:block">
           <div className="font-head font-extrabold text-white text-2xl md:text-[2.2rem] leading-none">
-            8<span className="text-mint">+</span>
+            3<span className="text-mint">+</span>
           </div>
           <div className="font-mono text-[0.7rem] text-muted uppercase tracking-[0.1em] mt-1">
-            Technologies
+            Languages
           </div>
         </div>
       </div>

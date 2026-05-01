@@ -55,12 +55,35 @@ export default function Nav() {
           ))}
         </ul>
 
-        <a
-          href="mailto:nchombuayvta@gmail.com"
-          className="hidden md:inline-block font-mono text-xs border border-mint text-mint px-5 py-2 rounded-sm hover:bg-[var(--mint-dim)] transition-colors tracking-[0.05em]"
-        >
-          Hire me
-        </a>
+        <div className="hidden md:flex items-center gap-3">
+          <a
+            href="/cv.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-mono text-xs text-muted hover:text-mint transition-colors tracking-[0.05em] flex items-center gap-1.5"
+            title="Download CV"
+          >
+            <svg
+              width="13"
+              height="13"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+            >
+              <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4" />
+              <polyline points="7 10 12 15 17 10" />
+              <line x1="12" y1="15" x2="12" y2="3" />
+            </svg>
+            CV
+          </a>
+          <a
+            href="mailto:nchombuayvta@gmail.com"
+            className="font-mono text-xs border border-mint text-mint px-5 py-2 rounded-sm hover:bg-[var(--mint-dim)] transition-colors tracking-[0.05em]"
+          >
+            Hire me
+          </a>
+        </div>
 
         {/* Hamburger button */}
         <button
@@ -94,7 +117,7 @@ export default function Nav() {
         }`}
       >
         <div className="h-full flex flex-col justify-center items-center px-[5vw]">
-          <ul className="flex flex-col gap-6 items-center mb-12">
+          <ul className="flex flex-col gap-6 items-center mb-10">
             {links.map((l, i) => (
               <li key={l.href}>
                 <a
@@ -114,19 +137,48 @@ export default function Nav() {
             ))}
           </ul>
 
-          <a
-            href="mailto:nchombuayvta@gmail.com"
-            onClick={() => setOpen(false)}
-            className={`font-mono text-sm border border-mint text-mint px-8 py-3 rounded-sm hover:bg-[var(--mint-dim)] transition-all tracking-[0.05em] ${
-              open ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
-            }`}
-            style={{
-              transitionDuration: "500ms",
-              transitionDelay: open ? `${links.length * 60 + 150}ms` : "0ms",
-            }}
-          >
-            Hire me →
-          </a>
+          <div className="flex flex-col gap-3 items-center">
+            <a
+              href="/cv.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setOpen(false)}
+              className={`font-mono text-sm border border-mint/30 text-mint px-8 py-3 rounded-sm hover:bg-[var(--mint-dim)] transition-all tracking-[0.05em] flex items-center gap-2 ${
+                open ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+              }`}
+              style={{
+                transitionDuration: "500ms",
+                transitionDelay: open ? `${links.length * 60 + 150}ms` : "0ms",
+              }}
+            >
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+              >
+                <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4" />
+                <polyline points="7 10 12 15 17 10" />
+                <line x1="12" y1="15" x2="12" y2="3" />
+              </svg>
+              Download CV
+            </a>
+            <a
+              href="mailto:nchombuayvta@gmail.com"
+              onClick={() => setOpen(false)}
+              className={`font-mono text-sm border border-mint text-mint px-8 py-3 rounded-sm hover:bg-[var(--mint-dim)] transition-all tracking-[0.05em] ${
+                open ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+              }`}
+              style={{
+                transitionDuration: "500ms",
+                transitionDelay: open ? `${links.length * 60 + 200}ms` : "0ms",
+              }}
+            >
+              Hire me →
+            </a>
+          </div>
 
           <div
             className={`absolute bottom-12 left-0 right-0 text-center font-mono text-[0.7rem] text-muted tracking-[0.1em] uppercase transition-opacity duration-500 ${

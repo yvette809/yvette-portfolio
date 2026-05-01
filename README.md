@@ -1,23 +1,29 @@
 # Yvette Tanila Nchombua — Portfolio
 
-A modern, cinematic portfolio built with **Next.js 14**, **TypeScript**, and **Tailwind CSS** — featuring a blog, an EmailJS-powered contact form, and a fully responsive design with mobile hamburger menu.
+A modern, cinematic portfolio built with **Next.js 14**, **TypeScript**, and **Tailwind CSS**.
 
-## Features
+## 🌐 Live
+
+**[yvette-portfolio-six.vercel.app](https://yvette-portfolio-six.vercel.app)**
+
+## ✨ Features
 
 - 🌑 Cinematic dark theme with electric mint accents
-- 🍔 **Hamburger menu** on mobile with full-screen overlay
+- 🍔 Hamburger menu on mobile with full-screen overlay
 - 🖱️ Custom cursor (desktop only — auto-disabled on touch)
 - ✍️ Typed role animation in the hero
 - 📜 Scroll-reveal animations
 - 📊 Animated skill proficiency bars
-- 🎴 Project cards with **real screenshots** support
-- ✉️ **Working EmailJS contact form** — success/error banners at top
+- 🎴 Project cards with screenshot support
+- ✉️ Working **EmailJS contact form** with success/error banners at top
 - 📝 Blog with listing + individual post pages
 - 📱 Fully responsive (mobile, tablet, desktop)
-- 🎨 Improved text contrast for readability
-- 🎯 SEO-ready metadata
+- 🎯 SEO-ready (OpenGraph, Twitter cards, structured metadata)
+- 🌟 Custom favicon + OpenGraph image
+- 📄 Downloadable CV button (in nav, hero, and mobile menu)
+- 📈 **Vercel Analytics** + **Speed Insights** built-in
 
-## Setup
+## 🚀 Setup
 
 ```bash
 npm install
@@ -32,30 +38,28 @@ Open **http://localhost:3000**.
 
 1. Sign up at [emailjs.com](https://www.emailjs.com) (free tier: 200 emails/month)
 2. **Email Services** → "Add New Service" → connect Gmail/Outlook
-3. **Email Templates** → "Create New Template", use these variables in the template body:
+3. **Email Templates** → "Create New Template", use these variables:
    ```
    From: {{name}} <{{email}}>
    Subject: {{subject}}
 
    {{message}}
    ```
-   Set "To Email" to your address (`nchombuayvta@gmail.com`).
 4. **Account → API Keys** → copy your **Public Key**
-5. **Account → Security** → add allowed origins (your domain in production, `localhost` for dev)
-6. Paste the three values into `.env.local`:
+5. **Account → Security** → add allowed origins (your domain + `localhost`)
+6. Paste values into `.env.local`:
    ```
    NEXT_PUBLIC_EMAILJS_SERVICE_ID=service_xxx
    NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=template_xxx
    NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=xxx
    ```
-7. Restart `npm run dev`
 
 ## 📷 Adding project screenshots
 
-The portfolio currently uses a placeholder SVG for project images. To add real screenshots:
+Replace placeholder images with real ones:
 
-1. Take screenshots of your live projects (use [shots.so](https://shots.so/) for nice browser frames)
-2. Save them in `public/projects/` as `.webp` (smaller) or `.png`:
+1. Take screenshots (use [shots.so](https://shots.so/) for browser frames)
+2. Save in `public/projects/` as `.webp`:
    ```
    public/projects/
      ai-studio.webp
@@ -64,69 +68,88 @@ The portfolio currently uses a placeholder SVG for project images. To add real s
      activity-finder.webp
      beach-resort.webp
    ```
-3. Update the `image` field in `components/Projects.tsx`:
-   ```typescript
-   image: "/projects/airbnb.webp"
-   ```
+3. Update the `image` field in `components/Projects.tsx`
 
-**Recommended size**: 1200×750px or 1600×1000px
+**Recommended size**: 1200×750px
+
+## 📄 CV
+
+The downloadable CV is at `public/cv.pdf`. To update it:
+- Replace `public/cv.pdf` with your latest version
+- Buttons in the nav, hero, and mobile menu link to it automatically
 
 ## 📝 Adding blog posts
 
-Edit `lib/posts.ts` and append a new post to the `posts` array. The renderer supports headings (`##`), bold (`**text**`), inline code (`` `code` ``), code blocks (` ``` `), and bullet/numbered lists.
+Edit `lib/posts.ts` and append a post to the `posts` array. The renderer supports headings (`##`), bold (`**text**`), inline code (`` `code` ``), code blocks (` ``` `), and bullet/numbered lists.
 
-## Build for production
-
-```bash
-npm run build
-npm run start
-```
-
-## Deploy to Vercel (recommended)
+## 🚀 Deploy to Vercel
 
 ```bash
 npm install -g vercel
 vercel
 ```
 
-Then add your `NEXT_PUBLIC_EMAILJS_*` keys in **Vercel Dashboard → Project → Settings → Environment Variables**.
+Add env vars in **Vercel Dashboard → Project → Settings → Environment Variables**:
+- `NEXT_PUBLIC_EMAILJS_SERVICE_ID`
+- `NEXT_PUBLIC_EMAILJS_TEMPLATE_ID`
+- `NEXT_PUBLIC_EMAILJS_PUBLIC_KEY`
+- `NEXT_PUBLIC_SITE_URL` (e.g. `https://yvette-portfolio-six.vercel.app`)
 
-## Deploy to Netlify
+### Enable Analytics
 
-1. Push to GitHub
-2. Go to [Netlify](https://app.netlify.com) → "New site from Git"
-3. Build command: `npm run build`
-4. Publish directory: `.next`
-5. Add env vars under **Site Settings → Environment Variables**
+After deploy, in your Vercel dashboard:
+- **Analytics tab** → click "Enable" (free tier)
+- **Speed Insights tab** → click "Enable" (free tier)
+
+Both packages are already installed and integrated.
+
+## 🌐 Custom domain (recommended)
+
+`yvette-portfolio-six.vercel.app` works, but a custom domain looks far more professional:
+
+1. Buy from [Namecheap](https://www.namecheap.com) or [Porkbun](https://porkbun.com) — `.dev`, `.codes`, `.com`, etc. (~$12/year)
+2. **Vercel → Project → Settings → Domains** → add domain
+3. Follow Vercel's DNS instructions (usually adding A or CNAME records)
+4. Update `NEXT_PUBLIC_SITE_URL` in Vercel env vars to your new domain
+
+Suggested options:
+- `yvettetanila.dev`
+- `yvette.codes`
+- `yvettenchombua.com`
 
 ## Project Structure
 
 ```
 yvette-portfolio/
 ├── app/
-│   ├── layout.tsx
+│   ├── layout.tsx              ← Metadata, fonts, analytics
 │   ├── page.tsx
 │   ├── globals.css
+│   ├── icon.png                ← Favicon (auto-detected by Next.js)
+│   ├── apple-icon.png          ← iOS home-screen icon
+│   ├── opengraph-image.png     ← Social share image
+│   ├── twitter-image.png       ← Twitter card image
 │   └── blog/
 │       ├── page.tsx
 │       └── [slug]/page.tsx
 ├── components/
 │   ├── CustomCursor.tsx
 │   ├── Reveal.tsx
-│   ├── Nav.tsx               ← Hamburger menu on mobile
-│   ├── Hero.tsx
+│   ├── Nav.tsx                 ← Hamburger + CV download
+│   ├── Hero.tsx                ← Typed text + CV button
 │   ├── About.tsx
-│   ├── Projects.tsx          ← Image-based cards
+│   ├── Projects.tsx
 │   ├── Skills.tsx
 │   ├── Experience.tsx
 │   ├── Education.tsx
 │   ├── BlogPreview.tsx
 │   ├── Contact.tsx
-│   ├── ContactForm.tsx       ← EmailJS form
+│   ├── ContactForm.tsx
 │   └── Footer.tsx
 ├── lib/
-│   └── posts.ts              ← Blog content
+│   └── posts.ts
 ├── public/
+│   ├── cv.pdf                  ← Your downloadable CV
 │   └── projects/
 │       └── placeholder.svg
 ├── .env.local.example
